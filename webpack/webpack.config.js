@@ -1,9 +1,11 @@
+var path = require("path");
+
 module.exports = {
   progress: true,
   devtool: 'inline-source-map',
   entry: "./src/entry.js",
   output: {
-    path: __dirname + "/static",
+    path: path.resolve(__dirname, "../static"),
     filename: "client.js"
   },
   module: {
