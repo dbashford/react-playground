@@ -10,4 +10,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.body);
+ReactDOM.render(<App />, document.getElementById('app-container'));

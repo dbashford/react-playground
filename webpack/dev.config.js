@@ -1,9 +1,13 @@
-var path = require("path");
+var path = require("path")
+  , webpack = require("webpack")
+  ;
 
 module.exports = {
   progress: true,
   devtool: 'inline-source-map',
-  entry: "./src/entry.js",
+  entry: {
+    app: ["webpack/hot/dev-server", "./src/entry.js"]
+  },
   output: {
     path: path.resolve(__dirname, "../static"),
     filename: "client.js"
@@ -32,5 +36,8 @@ module.exports = {
       'node_modules'
     ],
     extensions: ['', '.js']
-  }
+  },
+  plugins: [
+     new webpack.HotModuleReplacementPlugin()
+  ]
 };
