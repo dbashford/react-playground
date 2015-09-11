@@ -1,7 +1,6 @@
 import styles from './style.scss';
 import React, {Component} from 'react';
-
-console.log(styles)
+import ReactDOM from 'react-dom';
 
 class App extends Component {
   render() {
@@ -11,4 +10,4 @@ class App extends Component {
   }
 }
 
-React.render(<App />, document.body);
+ReactDOM.render(<App />, document.body);

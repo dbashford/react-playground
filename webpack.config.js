@@ -5,10 +5,6 @@ module.exports = {
   output: {
     path: __dirname + "/static",
     filename: "client.js"
-    // path: __dirname + "/static",
-    // filename: 'client.js',
-    // chunkFilename: '[name]-[chunkhash].js',
-    // publicPath: 'http://localhost:3001/dist/'
   },
   module: {
     loaders: [
