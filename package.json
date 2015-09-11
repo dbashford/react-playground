@@ -11,7 +11,7 @@
   "main": "index.html",
   "scripts": {
     "lint": "eslint -c .eslintrc src",
-    "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.config.js",
+    "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack/webpack.config.js",
     "watch-client": "node webpack/webpack-dev-server.js",
     "watch-both": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run watch-client\" \"npm run start\""
   },
