@@ -1,0 +1,17 @@
+{
+  "stage": 0,
+  "plugins": [
+    "babel-plugin-react-transform",
+    "babel-plugin-typecheck"
+  ],
+  "optional": [
+    "runtime"
+  ],
+  "extra": {
+    "react-transform": [{
+      "target": "react-transform-webpack-hmr",
+      "imports": ["react"],
+      "locals": ["module"]
+    }]
+  }
+}
