@@ -15,7 +15,7 @@ class Timer extends Component {
 
   render() {
     const { timerState } = this.props;
-    return <div styleName="timer">{timerState.value}</div>;
+    return <div styleName="timer">{timerState.get('value')}</div>;
   }
 }
 
