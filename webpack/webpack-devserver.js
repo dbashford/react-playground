@@ -3,7 +3,7 @@ var WebpackDevServer = require('webpack-dev-server')
   , config = require('./dev.config')
   , serverOptions = {
       contentBase: './static',
-      quiet: true,
+      quiet: false,
       noInfo: true,
       hot: true,
       inline: true,

@@ -1,13 +1,8 @@
-import styles from './style.scss';
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './containers/Root';
 
-class App extends Component {
-  render() {
-    return (
-      <h1 className={styles.bg}>HELLO WORLD</h1>
-    );
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app-container'));
+ReactDOM.render(
+  <Root />,
+  document.getElementById('app-container')
+);
