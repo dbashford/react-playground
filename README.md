@@ -31,6 +31,41 @@
 
 ## Details
 
+### Action Object Standards
+
+With `3.0` of redux, your `Action`s need to have a `type`.  The use of [redux-immutablejs](https://github.com/indexiatech/redux-immutablejs) further enforces this.
+
+There are also several ways to encapsulate the data that travels with the action.
+
+- [One is to use `payload`](https://github.com/acdlite/flux-standard-action#example)
+```javascript
+{
+  type: 'ADD_TODO',
+  payload: {
+    text: 'Do something.'  
+  }
+}
+```
+
+- [Another uses `data`](https://github.com/gajus/redux-immutable-examples/blob/d854d9e0a9df23b5ce2d10573ba2c9eb7308c3c8/src/app/actions/index.js#L5-L10)
+```javascript
+{
+  type: 'ADD_TODO',
+  data: {
+    text: 'Do something.'
+  }
+}
+```
+
+- And the redux docs themselves prefer to [not encapsulate the data at all](https://github.com/rackt/redux/blob/c1200540528eabaab3e98b4c47af9cb5ec4cd368/examples/todomvc/actions/todos.js)
+```javascript
+{
+  type: 'ADD_TODO',
+  text: 'Do something.'
+}
+```
+
+
 ### Immutability and ImmutableJS
 Redux places a huge impetus on immutable data. Any time state transformation occurs, existing state cannot be mutated. To fully realize the power of Redux, this should be taken seriously. Not mutating state can get tricky when dealing with nested data structures.
 
@@ -130,6 +165,8 @@ export default createReducer(initialState, {
     state.set('amount', action.amount)
 });
 ```
+
+Note: redux-immutablejs expects your actions to have a `type` in order to match them to the handler map.  This shouldn't be an issue as with version `3.0` redux expects a type.
 
 
 

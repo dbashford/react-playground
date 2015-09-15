@@ -13,5 +13,5 @@ export default createReducer(initialState, {
   [DECREMENT_TIME]: (state) =>
     state.update('value', v => v - state.get('amount')),
   [NEW_AMOUNT]: (state, action) =>
-    state.set('amount', action.amount)
+    state.set('amount', action.data.amount)
 });
