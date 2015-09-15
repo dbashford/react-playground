@@ -17,8 +17,7 @@
 - prod builds in webpack
 
 ##### React/Redux
-- redux-immutable, bindings to immutable, replaces `combineReducers`
-  - Canonical reducer composition: https://github.com/gajus/canonical-reducer-composition
+- redux-immutablejs, bindings to immutable, replaces `combineReducers`
 - redux-thunk, allow for async control flow
 - react-router, route for react
 - redux-react-router, redux bindings, keep router state in redux?
@@ -79,3 +78,8 @@ return state;
 ```
 
 This code presumes that `state.todos` is already an immutablejs `List` of `Map`s. `update` will return a new `List`. `item.set` returns a new todo (not a mutated old todo) which replaces the todo at the given index.
+
+### redux-immutablejs
+
+
+
