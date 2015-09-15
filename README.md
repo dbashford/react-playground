@@ -27,7 +27,6 @@
 - reselect, memoized selectors, compute derived data, limit transforms
 - normalizr, for solving complex data structures with schemas
 - redux-actions, Flux Standard Action utilities for Redux.
-- data in payload: https://github.com/acdlite/flux-standard-action#payload
 
 ## Details
 
