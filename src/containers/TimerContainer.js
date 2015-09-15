@@ -7,7 +7,7 @@ import * as TimerActions from '../actions/timer';
 // Which part of the ***Redux global state*** does our component want to receive as props?
 function mapStateToProps(state) {
   return {
-    timerState: state.timer
+    timerState: state.get('timer')
   };
 }
 

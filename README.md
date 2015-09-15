@@ -1,5 +1,7 @@
 # react-playground
 
+## Running
+
 ### Run lint outside of build
 `npm run lint`
 
@@ -9,15 +11,14 @@
 ### Run Dev server
 `npm run watch-client`
 
-### TODOs
+## TODOs
 
-##### Webpack/Hapi
+### Webpack/Hapi
 - hapi
 - isomorphic, allow application to be rendered on the server
 - prod builds in webpack
 
-##### React/Redux
-- redux-immutablejs, bindings to immutable, replaces `combineReducers`
+### React/Redux
 - redux-thunk, allow for async control flow
 - react-router, route for react
 - redux-react-router, redux bindings, keep router state in redux?
@@ -27,6 +28,8 @@
 - normalizr, for solving complex data structures with schemas
 - redux-actions, Flux Standard Action utilities for Redux.
 - data in payload: https://github.com/acdlite/flux-standard-action#payload
+
+## Details
 
 ### Immutability and ImmutableJS
 Redux places a huge impetus on immutable data. Any time state transformation occurs, existing state cannot be mutated. To fully realize the power of Redux, this should be taken seriously. Not mutating state can get tricky when dealing with nested data structures.
@@ -80,6 +83,54 @@ return state;
 This code presumes that `state.todos` is already an immutablejs `List` of `Map`s. `update` will return a new `List`. `item.set` returns a new todo (not a mutated old todo) which replaces the todo at the given index.
 
 ### redux-immutablejs
+
+[redux-immutablejs](https://github.com/indexiatech/redux-immutablejs) provides two major features.
+
+First, it enforces the need for Immutable.js objects being returned from Redux reducers.  If you return an object that isn't from Immutable you'll get an error: `Uncaught TypeError: Reducers must return Immutable objects.`
+
+Second, it provides a `createReducer` function that allows you to use a handler map instead of a `switch` statement.
+
+So this:
+
+```javascript
+function construct() {
+  return Immutable.fromJS({
+    amount: 1,
+    value: 0
+  });
+}
+
+export default function(state = construct(), action) {
+  switch (action.type) {
+  case INCREMENT_TIME:
+    return state.update('value', v => v + state.get('amount'));
+  case DECREMENT_TIME:
+    return state.update('value', v => v - state.get('amount'));
+  case NEW_AMOUNT:
+    return state.set('amount', action.amount);
+  default:
+    return state;
+  }
+}
+```
+
+Turns into this:
+```javascript
+const initialState = Immutable.fromJS({
+  amount: 1,
+  value: 0
+});
+
+export default createReducer(initialState, {
+  [INCREMENT_TIME]: (state) =>
+    state.update('value', v => v + state.get('amount')),
+  [DECREMENT_TIME]: (state) =>
+    state.update('value', v => v - state.get('amount')),
+  [NEW_AMOUNT]: (state, action) =>
+    state.set('amount', action.amount)
+});
+```
+
 
 
 

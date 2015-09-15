@@ -18,9 +18,12 @@
   "dependencies": {
     "react": "0.14.0-rc1",
     "react-dom": "0.14.0-rc1",
+
     "react-redux": "2.1.2",
     "redux": "3.0.0",
-    "immutable":"3.7.5"
+
+    "immutable":"3.7.5",
+    "redux-immutablejs":"0.0.6"
   },
   "devDependencies": {
     "webpack": "1.12.1",
