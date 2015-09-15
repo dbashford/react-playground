@@ -37,7 +37,7 @@ With `3.0` of redux, your `Action`s need to have a `type`.  The use of [redux-im
 
 There are also several ways to encapsulate the data that travels with the action.
 
-- [One is to use `payload`](https://github.com/acdlite/flux-standard-action#example)
+[One is to use `payload`](https://github.com/acdlite/flux-standard-action#example)
 ```javascript
 {
   type: 'ADD_TODO',
@@ -47,7 +47,7 @@ There are also several ways to encapsulate the data that travels with the action
 }
 ```
 
-- [Another uses `data`](https://github.com/gajus/redux-immutable-examples/blob/d854d9e0a9df23b5ce2d10573ba2c9eb7308c3c8/src/app/actions/index.js#L5-L10)
+[Another uses `data`](https://github.com/gajus/redux-immutable-examples/blob/d854d9e0a9df23b5ce2d10573ba2c9eb7308c3c8/src/app/actions/index.js#L5-L10)
 ```javascript
 {
   type: 'ADD_TODO',
@@ -57,7 +57,7 @@ There are also several ways to encapsulate the data that travels with the action
 }
 ```
 
-- And the redux docs themselves prefer to [not encapsulate the data at all](https://github.com/rackt/redux/blob/c1200540528eabaab3e98b4c47af9cb5ec4cd368/examples/todomvc/actions/todos.js)
+And the redux docs themselves prefer to [not encapsulate the data at all](https://github.com/rackt/redux/blob/c1200540528eabaab3e98b4c47af9cb5ec4cd368/examples/todomvc/actions/todos.js)
 ```javascript
 {
   type: 'ADD_TODO',
@@ -65,6 +65,7 @@ There are also several ways to encapsulate the data that travels with the action
 }
 ```
 
+This repo uses the `data` standard.
 
 ### Immutability and ImmutableJS
 Redux places a huge impetus on immutable data. Any time state transformation occurs, existing state cannot be mutated. To fully realize the power of Redux, this should be taken seriously. Not mutating state can get tricky when dealing with nested data structures.
