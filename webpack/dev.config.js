@@ -38,6 +38,12 @@ module.exports = {
     extensions: ['', '.js']
   },
   plugins: [
-     new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true
+    }),
   ]
 };

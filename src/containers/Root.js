@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+// import { compose, createStore, applyMiddleware } from 'redux';
+import { compose, createStore } from 'redux';
 import TimerApp from './TimerContainer';
 import rootReducer from '../reducers';
 
-const store = createStore(rootReducer);
+const isDevTools = __DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__;
 
-if (module.hot) {
+let finalCreateStore;
+if (isDevTools) {
+  const { devTools, persistState } = require('redux-devtools');
+  finalCreateStore = compose(
+    // Enables your middleware:
+    // applyMiddleware(m1, m2, m3), // any Redux middleware, e.g. redux-thunk
+    // Provides support for DevTools:
+    devTools(),
+    // Lets you write ?debug_session=<name> in address bar to persist debug sessions
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+  )(createStore);
+} else {
+  finalCreateStore = createStore;
+}
+
+const store = finalCreateStore(rootReducer);
+
+if (__DEVELOPMENT__ && module.hot) {
   // Enable Webpack hot module replacement for reducers
   module.hot.accept('../reducers', () => {
     const nextRootReducer = require('../reducers/index');
@@ -16,10 +34,26 @@ if (module.hot) {
 
 export default class Root extends Component {
   render() {
-    return (
-      <Provider store={store}>
-        <TimerApp />
-      </Provider>
-    );
+    const provider = ( <Provider store={store}>
+                          <TimerApp />
+                        </Provider>
+                      );
+
+    let component;
+    if (isDevTools) {
+      const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
+
+      component = (
+        <div>
+          { provider }
+          <DebugPanel top right bottom>
+            <DevTools store={store} monitor={LogMonitor} />
+          </DebugPanel>
+        </div>
+      );
+    } else {
+      component = { provider };
+    }
+    return component;
   }
 }
