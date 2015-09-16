@@ -5,10 +5,8 @@ import { compose, createStore } from 'redux';
 import TimerApp from './TimerContainer';
 import rootReducer from '../reducers';
 
-const isDevTools = __DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__;
-
 let finalCreateStore;
-if (isDevTools) {
+if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
   const { devTools, persistState } = require('redux-devtools');
   finalCreateStore = compose(
     // Enables your middleware:
@@ -40,7 +38,7 @@ export default class Root extends Component {
                       );
 
     let component;
-    if (isDevTools) {
+    if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
       const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
 
       component = (
