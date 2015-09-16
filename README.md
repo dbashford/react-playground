@@ -26,7 +26,13 @@
 - redux-form, manage forms/validation
 - reselect, memoized selectors, compute derived data, limit transforms
 - normalizr, for solving complex data structures with schemas
+
+### Future immutable work
 - redux-actions, Flux Standard Action utilities for Redux.
+  - want to move toward https://github.com/acdlite/flux-standard-action and redux-actions has good support
+- seamless-immutable, better immutable as ImmutableJS isn't purely immutable, can still do bad things: http://noredinktech.tumblr.com/post/107617838018/switching-from-immutablejs-to-seamless-immutable
+- Immutability discussion: https://github.com/rackt/redux/issues/548
+- Look into mori
 
 ## Details
 
@@ -64,7 +70,7 @@ And the redux docs themselves prefer to [not encapsulate the data at all](https:
 }
 ```
 
-This repo uses the `data` standard.
+This repo uses the `payload` standard from [Flux Action Standard](https://github.com/acdlite/flux-standard-action).
 
 ### Immutability and ImmutableJS
 Redux places a huge impetus on immutable data. Any time state transformation occurs, existing state cannot be mutated. To fully realize the power of Redux, this should be taken seriously. Not mutating state can get tricky when dealing with nested data structures.
@@ -117,6 +123,27 @@ return state;
 
 This code presumes that `state.todos` is already an immutablejs `List` of `Map`s. `update` will return a new `List`. `item.set` returns a new todo (not a mutated old todo) which replaces the todo at the given index.
 
+Note:
+
+ImmutableJS isn't deeply immutable. If the item you place inside an Immutable structure is itself mutable, then it can be mutated.  Example:
+
+```javascript
+var obj = {foo: "original"};
+var notFullyImmutable = Immutable.List.of(obj);
+
+notFullyImmutable.get(0) // { foo: 'original' }
+
+obj.foo = "mutated!";
+
+notFullyImmutable.get(0) // { foo: 'mutated!' }
+```
+
+If all Immutable structures are created with `fromJS` then this isn't an issue.
+
+Immutable.js Issues tracking problem:
+- https://github.com/facebook/immutable-js/issues/546
+- https://github.com/facebook/immutable-js/issues/473
+
 ### redux-immutablejs
 
 [redux-immutablejs](https://github.com/indexiatech/redux-immutablejs) provides two major features.
@@ -166,7 +193,7 @@ export default createReducer(initialState, {
 });
 ```
 
-Note: redux-immutablejs expects your actions to have a `type` in order to match them to the handler map.  This shouldn't be an issue as with version `3.0` redux expects a type.
+Note: redux-immutablejs expects your actions to have a `type` in order to match them to the handler map.  This shouldn't be an issue as with version `3.0` redux expects a `type` as well.
 
 
 

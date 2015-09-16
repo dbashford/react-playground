@@ -17,8 +17,6 @@ export function decrement() {
 export function newAmount(amount = 1) {
   return {
     type: NEW_AMOUNT,
-    data: {
-      amount
-    }
+    payload: amount
   };
 }
