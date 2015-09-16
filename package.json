@@ -23,7 +23,8 @@
     "redux": "3.0.0",
 
     "immutable":"3.7.5",
-    "redux-immutablejs":"0.0.6"
+    "redux-immutablejs":"0.0.6",
+    "redux-actions": "0.8.0"
   },
   "devDependencies": {
     "webpack": "1.12.1",

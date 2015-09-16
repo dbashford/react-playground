@@ -1,9 +1,12 @@
-import { combineReducers } from 'redux-immutablejs';
+import { combineReducers } from 'redux';
+import Immutable from 'immutable';
 
 import timer from './timer-reducer';
 
-const rootReducer = combineReducers({
+var reducers = Immutable.fromJS({
   timer
 });
+
+const rootReducer = combineReducers(reducers);
 
 export default rootReducer;
