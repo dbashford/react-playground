@@ -12,3 +12,12 @@ export default function handleAction(type, reducers) {
     return state;
   };
 }
+
+
+// in node_modules/redux-actions/lib/handleActions
+// function handleActions(handlers, defaultState, handleAct) {
+//   var reducers = _ownKeys2['default'](handlers).map(function (type) {
+//     var data = handleAct(type, handlers[type]);
+//     //var data = _handleAction2['default'](type, handlers[type]);
+//     return data;
+//   });
