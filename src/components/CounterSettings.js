@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from '../actions/counter';
+import { newAmount } from '../actions/counter';
 
 import CSSModules from 'react-css-modules';
 import styles from './style.scss';
@@ -18,7 +18,7 @@ function isPresent(val) {
   state => {
     return { amount: state.get('counter').get('amount') };
   },
-  dispatch => bindActionCreators(CounterActions, dispatch))
+  dispatch => bindActionCreators({newAmount}, dispatch))
 @CSSModules(styles)
 class CounterForm extends Component {
 
@@ -38,6 +38,7 @@ class CounterForm extends Component {
 
   onSubmit() {
     if (Object.keys(this.state.errors).length === 0) {
+      // push to redux store
       this.props.newAmount(parseInt(this.state.amount, 10));
       this.props.history.pushState(null, '/');
     }
@@ -67,10 +68,10 @@ class CounterForm extends Component {
     const presentValidation = this.handleValidation.bind(this, 'amount', isPresent, 'Amount must be provided.');
 
     return (
-      <div styleName="container">
+      <form styleName="container" onSubmit={this.onSubmit.bind(this)}>
 
         <div>
-          <label htmlFor="amount">Incrementor</label>
+          <label>Incrementor</label>
           <input
             type="text"
             value={this.state.amount}
@@ -80,9 +81,9 @@ class CounterForm extends Component {
           {this.state.errors.amount}
         </div>
 
-        <button onClick={this.onSubmit.bind(this)}>Submit</button>
+        <button>Submit</button>
 
-      </div>
+      </form>
     );
   }
 }
