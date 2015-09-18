@@ -1,22 +1,22 @@
-export const INCREMENT_TIME = 'INCREMENT_TIME';
-export const DECREMENT_TIME = 'DECREMENT_TIME';
-export const NEW_AMOUNT = 'NEW_AMOUNT';
+export const INCREMENT_COUNT = 'INCREMENT_COUNT';
+export const DECREMENT_COUNT = 'DECREMENT_COUNT';
+export const SET_SETTINGS = 'SET_SETTINGS';
 
 export function increment() {
   return {
-    type: INCREMENT_TIME,
+    type: INCREMENT_COUNT
   };
 }
 
 export function decrement() {
   return {
-    type: DECREMENT_TIME,
+    type: DECREMENT_COUNT
   };
 }
 
-export function newAmount(amount = 1) {
+export function setSettings(settings) {
   return {
-    type: NEW_AMOUNT,
-    payload: amount
+    type: SET_SETTINGS,
+    payload: settings
   };
 }
