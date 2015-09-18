@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 // import { compose, createStore, applyMiddleware } from 'redux';
 import { compose, createStore } from 'redux';
-import TimerApp from './TimerContainer';
+import App from './App';
 import rootReducer from '../reducers';
 
 let finalCreateStore;
@@ -32,10 +32,11 @@ if (__DEVELOPMENT__ && module.hot) {
 
 export default class Root extends Component {
   render() {
-    const provider = ( <Provider store={store}>
-                          <TimerApp />
-                        </Provider>
-                      );
+    const provider = (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
 
     let component;
     if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {

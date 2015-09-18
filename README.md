@@ -22,12 +22,12 @@
 - redux-thunk, allow for async control flow
 - react-router, route for react
 - redux-react-router, redux bindings, keep router state in redux?
-- redux dev tools, tools for state mgmt in new window
 - redux-form, manage forms/validation
+- redux-effects
 - reselect, memoized selectors, compute derived data, limit transforms
 - normalizr, for solving complex data structures with schemas
 
-### Future immutable work
+### Future immutable work notes
 - redux-actions, Flux Standard Action utilities for Redux.
   - want to move toward https://github.com/acdlite/flux-standard-action and redux-actions has good support
 - seamless-immutable, better immutable as ImmutableJS isn't purely immutable, can still do bad things: http://noredinktech.tumblr.com/post/107617838018/switching-from-immutablejs-to-seamless-immutable

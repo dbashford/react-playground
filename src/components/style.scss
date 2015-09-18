@@ -1,8 +1,13 @@
-.timer {
-  margin-top: -250px;
-  top: 50%;
+.container {
+  margin-top: 75px;
   width: 100%;
-  position: absolute;
   text-align:center;
-  font-size: 25em;
+}
+
+.large {
+  font-size: 20em;
+}
+
+.label {
+  margin-right:10px;
 }

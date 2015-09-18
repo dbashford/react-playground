@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux-immutablejs';
-
-import timer from './timer-reducer';
+import counter from './counter-reducer';
 
 const rootReducer = combineReducers({
-  timer
+  counter
 });
 
 export default rootReducer;
