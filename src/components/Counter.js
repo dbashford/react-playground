@@ -1,24 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { increment, decrement } from '../actions/counter';
+import { initializeCounter } from './decorators';
 
-import CSSModules from 'react-css-modules';
-import styles from './style.scss';
-
-function mapStateToProps(state) {
-  return {
-    count: state.getIn(['count', 'count']),
-    settings: state.getIn(['count', 'settings']),
-  };
-}
-
-@connect(
-  mapStateToProps,
-  dispatch => bindActionCreators({ increment, decrement }, dispatch))
-@CSSModules(styles)
-class Counter extends Component {
+@initializeCounter()
+export default class Counter extends Component {
 
   static propTypes = {
     count: PropTypes.number.isRequired,
@@ -67,4 +52,3 @@ class Counter extends Component {
   }
 }
 
-export default Counter;

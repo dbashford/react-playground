@@ -1,10 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { setSettings } from '../actions/counter';
-
-import CSSModules from 'react-css-modules';
-import styles from './style.scss';
+import { initializeSettings } from './decorators';
 
 function isNumber(val) {
   return val.length > 0 && isNaN(val);
@@ -14,17 +9,8 @@ function isPresent(val) {
   return val.length === 0;
 }
 
-function mapStateToProps(state) {
-  return {
-    settings: state.getIn(['count', 'settings'])
-  };
-}
-
-@connect(
-  mapStateToProps,
-  dispatch => bindActionCreators({setSettings}, dispatch))
-@CSSModules(styles)
-class CounterForm extends Component {
+@initializeSettings()
+export default class CounterSettings extends Component {
 
   static propTypes = {
     settings: PropTypes.object.isRequired,
@@ -111,5 +97,3 @@ class CounterForm extends Component {
     );
   }
 }
-
-export default CounterForm;
