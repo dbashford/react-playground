@@ -2,14 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import { connectComponent } from './decorators';
 import { setSettings } from '../actions/counter';
-
-function isNumber(val) {
-  return val.length > 0 && isNaN(val);
-}
-
-function isPresent(val) {
-  return val.length === 0;
-}
+import RequiredNumber from './validation/RequiredNumber';
 
 const wiring = {
   mapStateToProps: (state) => {
@@ -70,39 +63,23 @@ export default class CounterSettings extends Component {
   }
 
   render() {
-    const amountValidation = this.handleValidation.bind(this, 'amount', isNumber, 'Amount must be a number.', true);
-    const amountPresentValidation = this.handleValidation.bind(this, 'amount', isPresent, 'Amount must be provided.', false);
-
-    const intervalValidation = this.handleValidation.bind(this, 'interval', isNumber, 'Interval must be a number.', true);
-    const intervalPresentValidation = this.handleValidation.bind(this, 'interval', isPresent, 'Interval Milliseconds must be provided.', false);
-
     return (
       <form styleName="container" onSubmit={this.onSubmit.bind(this)}>
+        <RequiredNumber
+          label="Incrementor"
+          name="amount"
+          value={this.state.settings.amount}
+          error={this.state.errors.amount}
+          handleValidation={this.handleValidation.bind(this)} />
 
-        <div>
-          <label>Incrementor</label>
-          <input
-            type="text"
-            value={this.state.settings.amount}
-            onChange={amountValidation}
-            onBlur={amountPresentValidation}
-          />
-          {this.state.errors.amount}
-        </div>
-
-        <div>
-          <label>Interval Milliseconds</label>
-          <input
-            type="text"
-            value={this.state.settings.interval}
-            onChange={intervalValidation}
-            onBlur={intervalPresentValidation}
-          />
-          {this.state.errors.interval}
-        </div>
+        <RequiredNumber
+          label="Interval Milliseconds"
+          name="interval"
+          value={this.state.settings.interval}
+          error={this.state.errors.interval}
+          handleValidation={this.handleValidation.bind(this)} />
 
         <button>Submit</button>
-
       </form>
     );
   }
