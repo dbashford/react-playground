@@ -1,8 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { initializeCounter } from './decorators';
 
-@initializeCounter()
+import { increment, decrement } from '../actions/counter';
+import { connectComponent } from './decorators';
+
+const wiring = {
+  mapStateToProps: (state) => {
+    return {
+      count: state.getIn(['count', 'count']),
+      settings: state.getIn(['count', 'settings']),
+    };
+  },
+  actions: { increment, decrement }
+};
+
+@connectComponent(wiring)
 export default class Counter extends Component {
 
   static propTypes = {

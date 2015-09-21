@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { initializeSettings } from './decorators';
+
+import { connectComponent } from './decorators';
+import { setSettings } from '../actions/counter';
 
 function isNumber(val) {
   return val.length > 0 && isNaN(val);
@@ -9,7 +11,14 @@ function isPresent(val) {
   return val.length === 0;
 }
 
-@initializeSettings()
+const wiring = {
+  mapStateToProps: (state) => {
+    return { settings: state.getIn(['count', 'settings']) };
+  },
+  actions: { setSettings }
+};
+
+@connectComponent(wiring)
 export default class CounterSettings extends Component {
 
   static propTypes = {
@@ -26,7 +35,8 @@ export default class CounterSettings extends Component {
     };
   }
 
-  onSubmit() {
+  onSubmit(e) {
+    e.preventDefault();
     if (Object.keys(this.state.errors).length === 0) {
       const settings = this.state.settings;
       // need ints
