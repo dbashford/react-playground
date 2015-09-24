@@ -27,15 +27,18 @@ body {
   text-align: left;
 }
 
-.cs-submit {
+.cs-submit,
+.cs-cancel {
   padding: 4px 8px;
   background-color: #fff;
   border: rgba(0,0,0,0.3) 1px solid;
   border-radius: 3px;
+  margin-right: 10px;
   &:hover {
     background-color: #ebebeb;
   }
 }
+
 
 
 // General Styles

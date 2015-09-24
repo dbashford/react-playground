@@ -67,6 +67,10 @@ export default class CounterSettings extends Component {
     this.setState(newState);
   }
 
+  handleCancel() {
+    this.props.history.pushState(null, '/');
+  }
+
   render() {
     return (
       <form styleName="cs-container" onSubmit={this.onSubmit.bind(this)}>
@@ -87,6 +91,7 @@ export default class CounterSettings extends Component {
           />
 
         <button styleName="cs-submit">Submit</button>
+        <button styleName="cs-cancel" onClick={this.handleCancel.bind(this)}>Cancel</button>
       </form>
     );
   }
