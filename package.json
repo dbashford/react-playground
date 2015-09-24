@@ -51,7 +51,7 @@
     "autoprefixer-loader": "3.1.0",
     "sass-loader": "2.0.1",
     "style-loader": "0.12.3",
-    "react-css-modules":"3.0.5"
+    "react-css-modules":"3.2.1"
   },
   "engines": {
     "node": ">=0.10.32"

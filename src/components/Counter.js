@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { increment, decrement } from '../actions/counter';
-import { connectComponent } from './decorators';
+import { connectRedux, connectCSS } from './decorators';
+import styles from './style.scss';
 
-const wiring = {
+const redux = {
   mapStateToProps: (state) => {
     return {
       count: state.getIn(['count', 'count']),
@@ -14,7 +15,8 @@ const wiring = {
   actions: { increment, decrement }
 };
 
-@connectComponent(wiring)
+@connectRedux(redux)
+@connectCSS(styles)
 export default class Counter extends Component {
 
   static propTypes = {
@@ -63,4 +65,3 @@ export default class Counter extends Component {
     );
   }
 }
-
