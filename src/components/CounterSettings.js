@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import { setSettings } from '../actions/counter';
 import { connectRedux, connectCSS } from './decorators';
 import RequiredNumber from './validation/RequiredNumber';
-// import makeFormComponent from './validation/decorator';
 
 import styles from './style.scss';
 
@@ -14,7 +13,6 @@ const redux = {
   actions: { setSettings }
 };
 
-// @makeFormComponent
 @connectRedux(redux)
 @connectCSS(styles)
 export default class CounterSettings extends Component {
