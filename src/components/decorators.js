@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import cssModules from 'react-css-modules';
 
-function connectCSS(styles) {
+function connectCSS(styles, options = {}) {
   return function wrap(WrappedComponent) {
-    return cssModules(WrappedComponent, styles);
+    return cssModules(WrappedComponent, styles, options);
   };
 }
 
