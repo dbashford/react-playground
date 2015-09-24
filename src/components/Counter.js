@@ -80,10 +80,11 @@ export default class Counter extends Component {
       <div styleName="c-container">
         <h1>Count</h1>
         <div styleName="large">{this.props.count}</div>
-        <button onClick={this.toggleTimer}>
-          {this.state.timerStarted ? 'Stop Timer' : 'Start Timer'}
-        </button>
-
+        <div styleName="button-container">
+          <button styleName="c-button-start-stop" onClick={this.toggleTimer}>
+            {this.state.timerStarted ? 'Stop Timer' : 'Start Timer'}
+          </button>
+        </div>
         <Link to={`/settings`}>Edit Counter Settings</Link>
       </div>
     );
