@@ -1,3 +1,13 @@
+@mixin x-y-center-align {
+  //parent container must be positioned relative
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
 // counter styles  = c
 // counter settings = cs
 
@@ -9,7 +19,7 @@
   padding: 20px;
   color: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
-  margin-top: 75px;
+  @include x-y-center-align;
   h1 {
     margin: 0;
   }
