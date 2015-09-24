@@ -55,7 +55,7 @@ export default class Counter extends Component {
 
   render() {
     return (
-      <div styleName="container">
+      <div styleName="c-container">
         <h1>Count</h1>
         <div styleName="large">{this.props.count}</div>
         <Link to={`/settings`}>Edit Counter Settings</Link>

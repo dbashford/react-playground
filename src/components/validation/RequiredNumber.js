@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
+
+import localStyles from '../style.scss';
 
 function isNumber(val) {
   return val.length > 0 && isNaN(val);
@@ -8,6 +11,7 @@ function isPresent(val) {
   return val.length === 0;
 }
 
+@CSSModules(localStyles)
 export default class RequiredNumber extends Component {
 
   static propTypes = {
@@ -35,14 +39,15 @@ export default class RequiredNumber extends Component {
 
   render() {
     return (
-      <div>
-        <label>{this.props.label}</label>
-        <input
-          type="text"
-          value={this.props.value}
-          onChange={this.amountValidation}
-          onBlur={this.amountPresentValidation}
-        />
+      <div styleName="form-group">
+        <label>{this.props.label}
+          <input
+            type="text"
+            value={this.props.value}
+            onChange={this.amountValidation}
+            onBlur={this.amountPresentValidation}
+            />
+        </label>
         {this.props.error}
       </div>
     );

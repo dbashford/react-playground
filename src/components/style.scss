@@ -1,13 +1,66 @@
-.container {
-  margin-top: 75px;
-  width: 100%;
-  text-align:center;
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
+
+// counter styles  = c
+// counter settings = cs
+
+.c-container,
+.cs-container {
+  display: inline-block;
+  min-width: 25%;
+  background-color: #ffffff;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  margin-top: 75px;
+  h1 {
+    margin: 0;
+  }
+}
+
+.c-container {
+  text-align: center;
+}
+.cs-container {
+  text-align: left;
+}
+
+.cs-submit {
+  padding: 4px 8px;
+  background-color: #fff;
+  border: rgba(0,0,0,0.3) 1px solid;
+  border-radius: 3px;
+  &:hover {
+    background-color: #ebebeb;
+  }
+}
+
+
+// General Styles
 
 .large {
   font-size: 20em;
+
 }
 
-.label {
-  margin-right:10px;
+.form-group {
+  margin-bottom: 20px;
 }
+
+label {
+  span,
+  input {
+    display: block;
+  }
+  span {
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+  input {
+    width: 100%;
+    height: 24px;
+  }
+}
+

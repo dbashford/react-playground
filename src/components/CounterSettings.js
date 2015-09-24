@@ -64,7 +64,7 @@ export default class CounterSettings extends Component {
 
   render() {
     return (
-      <form styleName="container" onSubmit={this.onSubmit.bind(this)}>
+      <form styleName="cs-container" onSubmit={this.onSubmit.bind(this)}>
         <RequiredNumber
           label="Incrementor"
           name="amount"
@@ -79,7 +79,7 @@ export default class CounterSettings extends Component {
           error={this.state.errors.interval}
           handleValidation={this.handleValidation.bind(this)} />
 
-        <button>Submit</button>
+        <button styleName="cs-submit">Submit</button>
       </form>
     );
   }
