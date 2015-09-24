@@ -1,8 +1,3 @@
-body {
-  background-color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-}
-
 // counter styles  = c
 // counter settings = cs
 
@@ -27,8 +22,9 @@ body {
   text-align: left;
 }
 
-.cs-submit,
-.cs-cancel {
+.cs-button-submit,
+.cs-button-cancel,
+.c-button-start-stop {
   padding: 4px 8px;
   background-color: #fff;
   border: rgba(0,0,0,0.3) 1px solid;
@@ -39,31 +35,36 @@ body {
   }
 }
 
-
+.c-container,
+.cs-container {
+  label {
+    span,
+    input {
+      display: block;
+    }
+    span {
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    input {
+      width: 100%;
+      height: 24px;
+    }
+  }
+}
 
 // General Styles
 
+.button-container {
+  margin-bottom: 20px;
+}
+
 .large {
   font-size: 20em;
-
 }
 
 .form-group {
   margin-bottom: 20px;
 }
 
-label {
-  span,
-  input {
-    display: block;
-  }
-  span {
-    font-weight: bold;
-    margin-bottom: 3px;
-  }
-  input {
-    width: 100%;
-    height: 24px;
-  }
-}
 
