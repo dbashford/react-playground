@@ -88,8 +88,8 @@ export default class CounterSettings extends Component {
           handleValidation={this.handleValidation.bind(this)}
           />
 
-        <button styleName="cs-submit">Submit</button>
-        <button styleName="cs-cancel" onClick={this.handleCancel.bind(this)}>Cancel</button>
+        <button type="submit" styleName="cs-submit">Submit</button>
+        <button type="button" styleName="cs-cancel" onClick={this.handleCancel.bind(this)}>Cancel</button>
       </form>
     );
   }
