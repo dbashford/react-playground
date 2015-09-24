@@ -8,7 +8,7 @@ import styles from './style.scss';
 
 const redux = {
   mapStateToProps: (state) => {
-    return { settings: state.getIn(['count', 'settings']) };
+    return { initialSettings: state.getIn(['count', 'settings']) };
   },
   actions: { setSettings }
 };
@@ -26,7 +26,7 @@ export default class CounterSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fields: props.settings.toJS(),
+      fields: props.initialSettings.toJS(),
       errors: {}
     };
   }

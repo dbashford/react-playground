@@ -32,7 +32,7 @@ export default class Counter extends Component {
     // avoid rebind for every rerender
     this.toggleTimer = this.toggleTimer.bind(this);
     this.state = {
-      timerStarted: false
+      interval: undefined
     };
   }
 
@@ -53,14 +53,14 @@ export default class Counter extends Component {
   }
 
   clearTimer() {
-    if (this.interval) {
-      clearInterval(this.interval);
-      this.setState({ timerStarted: false });
+    if (this.state.interval) {
+      clearInterval(this.state.interval);
+      this.setState({ interval: undefined });
     }
   }
 
   toggleTimer() {
-    if (this.state.timerStarted) {
+    if (this.state.interval) {
       this.clearTimer();
     } else {
       this.timer();
@@ -70,19 +70,20 @@ export default class Counter extends Component {
   timer(interval = this.props.settings.get('interval')) {
     this.clearTimer();
     const ps = this.props;
-    this.interval = setInterval(
+    const intervalId = setInterval(
       (ps.settings.get('isIncrement')) ? ps.increment : ps.decrement, interval);
-    this.setState({ timerStarted: true });
+    this.setState({ interval: intervalId });
   }
 
   render() {
+    const buttonText = this.state.interval ? 'Stop Timer' : 'Start Timer';
     return (
       <div styleName="c-container">
         <h1>Count</h1>
         <div styleName="large">{this.props.count}</div>
         <div styleName="button-container">
           <button styleName="c-button-start-stop" onClick={this.toggleTimer}>
-            {this.state.timerStarted ? 'Stop Timer' : 'Start Timer'}
+            {buttonText}
           </button>
         </div>
         <Link to={`/settings`}>Edit Counter Settings</Link>
