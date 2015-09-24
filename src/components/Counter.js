@@ -26,6 +26,16 @@ export default class Counter extends Component {
     decrement: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+
+    // avoid rebind for every rerender
+    this.toggleTimer = this.toggleTimer.bind(this);
+    this.state = {
+      timerStarted: false
+    };
+  }
+
   componentDidMount() {
     this.timer();
   }
@@ -45,6 +55,15 @@ export default class Counter extends Component {
   clearTimer() {
     if (this.interval) {
       clearInterval(this.interval);
+      this.setState({ timerStarted: false });
+    }
+  }
+
+  toggleTimer() {
+    if (this.state.timerStarted) {
+      this.clearTimer();
+    } else {
+      this.timer();
     }
   }
 
@@ -53,6 +72,7 @@ export default class Counter extends Component {
     const ps = this.props;
     this.interval = setInterval(
       (ps.settings.get('isIncrement')) ? ps.increment : ps.decrement, interval);
+    this.setState({ timerStarted: true });
   }
 
   render() {
@@ -60,6 +80,10 @@ export default class Counter extends Component {
       <div styleName="c-container">
         <h1>Count</h1>
         <div styleName="large">{this.props.count}</div>
+        <button onClick={this.toggleTimer}>
+          {this.state.timerStarted ? 'Stop Timer' : 'Start Timer'}
+        </button>
+
         <Link to={`/settings`}>Edit Counter Settings</Link>
       </div>
     );

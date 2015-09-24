@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
-
-import localStyles from '../style.scss';
+import { connectCSS } from '../decorators';
+import styles from '../style.scss';
 
 function isNumber(val) {
   return val.length > 0 && isNaN(val);
@@ -11,7 +10,7 @@ function isPresent(val) {
   return val.length === 0;
 }
 
-@CSSModules(localStyles)
+@connectCSS(styles)
 export default class RequiredNumber extends Component {
 
   static propTypes = {
