@@ -38,6 +38,7 @@ export default class CounterSettings extends Component {
       // need ints
       settings.interval = parseInt(settings.interval, 10);
       settings.amount = parseInt(settings.amount, 10);
+      settings.counterDirection = settings.counterDirection;
 
       // call redux store
       this.props.setSettings(settings);
@@ -71,7 +72,6 @@ export default class CounterSettings extends Component {
 
   handleRadioChange(e) {
     console.log(e.target.value);
-    /* TODO - wire up incrementing and decrementing radio buttons */
   }
 
   render() {
@@ -98,7 +98,6 @@ export default class CounterSettings extends Component {
             />
             <span>Decrement</span>
           </label>
-          /* TODO - add input for starting value if you are decrementing */
         </div>
 
         <RequiredNumber
