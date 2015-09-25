@@ -77,12 +77,13 @@ export default class Counter extends Component {
 
   render() {
     const buttonText = this.state.interval ? 'Stop Timer' : 'Start Timer';
+    const buttonClass = this.state.interval ? 'c-button-stop' : 'c-button-start';
     return (
       <div styleName="c-container">
         <h1>Count</h1>
         <div styleName="large">{this.props.count}</div>
         <div styleName="button-container">
-          <button styleName="c-button-start-stop" onClick={this.toggleTimer}>
+          <button styleName={buttonClass} onClick={this.toggleTimer}>
             {buttonText}
           </button>
         </div>

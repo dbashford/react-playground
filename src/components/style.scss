@@ -1,4 +1,4 @@
-@mixin x-y-center-align {
+.x-y-center-align {
   //parent container must be positioned relative
   margin: 0;
   position: absolute;
@@ -13,13 +13,13 @@
 
 .c-container,
 .cs-container {
+  composes: x-y-center-align;
   display: inline-block;
   min-width: 25%;
   background-color: #ffffff;
   padding: 20px;
   color: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
-  @include x-y-center-align;
   h1 {
     margin: 0;
   }
@@ -34,14 +34,32 @@
 
 .cs-button-submit,
 .cs-button-cancel,
-.c-button-start-stop {
+.c-button-start,
+.c-button-stop {
   padding: 4px 8px;
   background-color: #fff;
   border: rgba(0,0,0,0.3) 1px solid;
   border-radius: 3px;
   margin-right: 10px;
+  font-size: 12px;
   &:hover {
     background-color: #ebebeb;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.c-button-start {
+  border-color: rgba(0,255,0,0.5);
+  &:hover {
+    border-color: rgba(0,255,0,1);
+  }
+}
+.c-button-stop {
+  border-color: rgba(255,0,0,0.5);
+  &:hover {
+    border-color: rgba(255,0,0,1);
   }
 }
 
