@@ -69,11 +69,40 @@ export default class CounterSettings extends Component {
     this.props.history.pushState(null, '/');
   }
 
+  handleRadioChange(e) {
+    console.log(e.target.value);
+    /* TODO - wire up incrementing and decrementing radio buttons */
+  }
+
   render() {
     return (
       <form styleName="cs-container" onSubmit={this.onSubmit.bind(this)}>
+
+        <div styleName="form-group">
+          <label styleName="make-block">
+            <input
+              type="radio"
+              name="counterDirection"
+              value="increment"
+              defaultChecked={true}
+              onChange={this.handleRadioChange.bind(this)}
+            />
+            <span>Increment</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="counterDirection"
+              value="decrement"
+              onChange={this.handleRadioChange.bind(this)}
+            />
+            <span>Decrement</span>
+          </label>
+          /* TODO - add input for starting value if you are decrementing */
+        </div>
+
         <RequiredNumber
-          label="Incrementor"
+          label="Number"
           name="amount"
           value={this.state.fields.amount}
           error={this.state.errors.amount}

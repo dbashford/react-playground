@@ -39,8 +39,10 @@ export default class RequiredNumber extends Component {
   render() {
     return (
       <div styleName="form-group">
-        <label>{this.props.label}
+        <label>
+          <span styleName="make-block">{this.props.label}</span>
           <input
+            styleName="make-block"
             type="text"
             value={this.props.value}
             onChange={this.amountValidation}

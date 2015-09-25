@@ -71,16 +71,12 @@
 .c-container,
 .cs-container {
   label {
-    span,
-    input {
-      display: block;
-    }
+    vertical-align: middle;
     span {
       font-weight: bold;
       margin-bottom: 3px;
     }
     input {
-      width: 100%;
       height: 24px;
     }
   }
@@ -94,6 +90,24 @@
 
 .form-group {
   margin-bottom: 20px;
+}
+
+.make-block {
+  display: block;
+}
+
+input.make-block {
+  width: 100%;
+}
+
+input[type="radio"] {
+  background-color: tan;
+  margin-right: 10px;
+  position: relative;
+  top: 4px;
+  &:focus {
+    outline: none;
+  }
 }
 
 
