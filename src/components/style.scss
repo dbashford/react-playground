@@ -32,6 +32,11 @@
   text-align: left;
 }
 
+.c-number-container {
+  font-family: monospace;
+  font-size: 20em;
+}
+
 .cs-button-submit,
 .cs-button-cancel,
 .c-button-start,
@@ -85,10 +90,6 @@
 
 .button-container {
   margin-bottom: 20px;
-}
-
-.large {
-  font-size: 20em;
 }
 
 .form-group {

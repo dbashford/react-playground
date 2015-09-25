@@ -81,7 +81,7 @@ export default class Counter extends Component {
     return (
       <div styleName="c-container">
         <h1>Count</h1>
-        <div styleName="large">{this.props.count}</div>
+        <div styleName="c-number-container">{this.props.count}</div>
         <div styleName="button-container">
           <button styleName={buttonClass} onClick={this.toggleTimer}>
             {buttonText}
