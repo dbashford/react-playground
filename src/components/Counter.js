@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import { increment, decrement } from '../actions/counter';
+import { updateCount } from '../actions/counter';
 import { connectRedux, connectCSS } from './decorators';
 import styles from './style.scss';
 
@@ -12,7 +12,7 @@ const redux = {
       settings: state.getIn(['count', 'settings']),
     };
   },
-  actions: { increment, decrement }
+  actions: { updateCount }
 };
 
 @connectRedux(redux)
@@ -22,8 +22,7 @@ export default class Counter extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
     settings: PropTypes.object.isRequired,
-    increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired
+    updateCount: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -70,8 +69,7 @@ export default class Counter extends Component {
   timer(interval = this.props.settings.get('interval')) {
     this.clearTimer();
     const ps = this.props;
-    const intervalId = setInterval(
-      (ps.settings.get('isIncrement')) ? ps.increment : ps.decrement, interval);
+    const intervalId = setInterval(ps.updateCount, interval);
     this.setState({ interval: intervalId });
   }
 

@@ -71,20 +71,21 @@ export default class CounterSettings extends Component {
   }
 
   handleRadioChange(e) {
-    console.log(e.target.value);
+    const newState = this.state;
+    newState.fields.increment = (e.target.value === 'true');
+    this.setState(newState);
   }
 
   render() {
     return (
       <form styleName="cs-container" onSubmit={this.onSubmit.bind(this)}>
-
         <div styleName="form-group">
           <label styleName="make-block">
             <input
               type="radio"
               name="counterDirection"
-              value="increment"
-              defaultChecked={true}
+              value="true"
+              defaultChecked={this.state.fields.increment}
               onChange={this.handleRadioChange.bind(this)}
             />
             <span>Increment</span>
@@ -93,7 +94,8 @@ export default class CounterSettings extends Component {
             <input
               type="radio"
               name="counterDirection"
-              value="decrement"
+              value="false"
+              defaultChecked={!this.state.fields.increment}
               onChange={this.handleRadioChange.bind(this)}
             />
             <span>Decrement</span>
