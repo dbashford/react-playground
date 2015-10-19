@@ -1,7 +1,8 @@
-import {Server} from "hapi";
-import inert from "inert";
+import {Server} from 'hapi';
+import inert from 'inert';
+import api from './api';
 
-const host = process.env.HOSTNAME || "localhost";
+const host = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 8000;
 
 let initialState = {
@@ -21,15 +22,17 @@ server.register([inert], (err) => {
     throw err;
   }
 
-  server.start( () => {
-    console.info("==> ✅  Server is listening");
-    console.info("==> 🌎  Go to " + server.info.uri.toLowerCase());
+  api(server, () => {
+    server.start( () => {
+      console.info('==> ✅  Server is listening');
+      console.info('==> 🌎  Go to ' + server.info.uri.toLowerCase());
+    });
   });
 });
 
 server.route({
-  method: "GET",
-  path: "/{params*}",
+  method: 'GET',
+  path: '/{params*}',
   handler: {
     directory: {
       path: 'static',

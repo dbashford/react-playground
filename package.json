@@ -27,7 +27,14 @@
     "redux": "3.0.0",
 
     "immutable":"3.7.5",
-    "redux-immutablejs":"0.0.6"
+    "redux-immutablejs":"0.0.6",
+
+    "concurrently": "0.1.1",
+    "piping": "0.3.0",
+
+    "hapi": "10.5.0",
+    "inert": "3.1.0",
+    "hapi-route-builder": "0.3.0"
   },
   "devDependencies": {
     "webpack": "1.12.1",
@@ -53,13 +60,7 @@
     "autoprefixer-loader": "3.1.0",
     "sass-loader": "2.0.1",
     "style-loader": "0.12.3",
-    "react-css-modules":"3.2.1",
-
-    "concurrently": "0.1.1",
-    "piping": "0.3.0",
-
-    "hapi":"10.5.0",
-    "inert":"3.1.0"
+    "react-css-modules":"3.2.1"
   },
   "engines": {
     "node": ">=0.10.32"
