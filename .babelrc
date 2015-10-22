@@ -1,8 +1,7 @@
 {
   "stage": 0,
   "plugins": [
-    "babel-plugin-react-transform",
-    "babel-plugin-typecheck"
+    "babel-plugin-react-transform"
   ],
   "optional": [
     "runtime"

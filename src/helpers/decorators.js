@@ -9,10 +9,13 @@ function connectCSS(styles, options = {}) {
   };
 }
 
-function connectRedux(wiring) {
+function connectRedux(wiring = {}) {
   return function wrap(WrappedComponent) {
     function mapDispatchToProps(dispatch) {
-      return bindActionCreators(wiring.actions, dispatch);
+      const actions = wiring.actions || {};
+      // always toss dispatch in so it is available on props
+      actions.dispatch = dispatch;
+      return bindActionCreators(actions, dispatch);
     }
     return connect(wiring.mapStateToProps, mapDispatchToProps)(WrappedComponent);
   };

@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import { updateCount } from '../actions/counter';
-import { connectRedux, connectCSS } from './decorators';
-import styles from './style.scss';
+import { updateCount } from '../../actions/';
+import { connectRedux, connectCSS } from '../../helpers/decorators';
+import styles from './counter.scss';
 
 const redux = {
   mapStateToProps: (state) => {

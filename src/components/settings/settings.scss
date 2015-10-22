@@ -1,0 +1,113 @@
+.x-y-center-align {
+  //parent container must be positioned relative
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+// counter styles  = c
+// counter settings = cs
+
+.c-container,
+.cs-container {
+  composes: x-y-center-align;
+  display: inline-block;
+  min-width: 25%;
+  background-color: #ffffff;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  h1 {
+    margin: 0;
+  }
+}
+
+.c-container {
+  text-align: center;
+}
+.cs-container {
+  text-align: left;
+}
+
+.c-number-container {
+  font-family: monospace;
+  font-size: 20em;
+}
+
+.cs-button-submit,
+.cs-button-cancel,
+.c-button-start,
+.c-button-stop {
+  padding: 4px 8px;
+  background-color: #fff;
+  border: rgba(0,0,0,0.3) 1px solid;
+  border-radius: 3px;
+  margin-right: 10px;
+  font-size: 12px;
+  &:hover {
+    background-color: #ebebeb;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.c-button-start {
+  border-color: rgba(0,255,0,0.5);
+  &:hover {
+    border-color: rgba(0,255,0,1);
+  }
+}
+.c-button-stop {
+  border-color: rgba(255,0,0,0.5);
+  &:hover {
+    border-color: rgba(255,0,0,1);
+  }
+}
+
+.c-container,
+.cs-container {
+  label {
+    vertical-align: middle;
+    span {
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    input {
+      height: 24px;
+    }
+  }
+}
+
+// General Styles
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.make-block {
+  display: block;
+}
+
+input.make-block {
+  width: 100%;
+}
+
+input[type="radio"] {
+  background-color: tan;
+  margin-right: 10px;
+  position: relative;
+  top: 4px;
+  &:focus {
+    outline: none;
+  }
+}
+
+

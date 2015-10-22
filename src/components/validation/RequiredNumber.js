@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { connectCSS } from '../decorators';
-import styles from '../style.scss';
+import { connectCSS } from '../../helpers/decorators';
+import styles from './required_number.scss';
 
 function isNumber(val) {
   return val.length > 0 && isNaN(val);

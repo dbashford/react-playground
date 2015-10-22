@@ -14,4 +14,4 @@ if (process.env.NODE_ENV !== "production") {
 	}
 }
 
-require("./src/server");
+require("./src/server/server");

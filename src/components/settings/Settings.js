@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
-import { setSettings } from '../actions/counter';
-import { connectRedux, connectCSS } from './decorators';
-import RequiredNumber from './validation/RequiredNumber';
+import { setSettings } from '../../actions/';
+import { connectRedux, connectCSS } from '../../helpers/decorators';
+import RequiredNumber from '../validation/RequiredNumber';
 
-import styles from './style.scss';
+import styles from './settings.scss';
 
 const redux = {
   mapStateToProps: (state) => {

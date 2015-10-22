@@ -1,49 +1,27 @@
-var path = require("path")
-  , webpack = require("webpack")
+var webpack = require('webpack')
+  , config = require('./prod.config')
   ;
 
-module.exports = {
-  progress: true,
-  devtool: 'inline-source-map',
-  entry: {
-    app: ["webpack/hot/dev-server", "./src/entry.js"]
-  },
-  output: {
-    path: path.resolve(__dirname, "../static"),
-    filename: "client.js"
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]__[hash:base64:5]',
-          'autoprefixer?browsers=last 2 version',
-          'sass?outputStyle=expanded&sourceMap'
-        ]
-      },
-      {
-        test: /\.js$/,
-        loaders: ['babel', 'eslint-loader'],
-        exclude: /node_modules/
-      }
-    ]
-  },
-  resolve: {
-    modulesDirectories: [
-      'src',
-      'node_modules'
-    ],
-    extensions: ['', '.js']
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      __CLIENT__: true,
-      __SERVER__: false,
-      __DEVELOPMENT__: true,
-      __DEVTOOLS__: true
-    }),
-  ]
-};
+config.cache = true;
+config.debug = true;
+config.devtool = "eval";
+
+config.output.publicPath = "http://localhost:3000/static/";
+
+config.entry.unshift(
+	"webpack-dev-server/client?http://localhost:3000",
+  "webpack/hot/dev-server"
+);
+
+config.plugins = [
+  new webpack.NoErrorsPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.DefinePlugin({
+    __CLIENT__: true,
+    __SERVER__: false,
+    __DEVELOPMENT__: true,
+    __DEVTOOLS__: true
+  }),
+];
+
+module.exports = config;
