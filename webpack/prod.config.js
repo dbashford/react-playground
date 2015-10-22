@@ -6,7 +6,7 @@ module.exports = {
   target:"web",
   progress: true,
   devtool: false,
-  entry: ["./src/entry.js"],
+  entry: ["./src/client/entry.js"],
   output: {
     path: path.resolve(__dirname, "../static"),
     filename: "client.js",
