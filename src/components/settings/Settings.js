@@ -18,7 +18,6 @@ const redux = {
 export default class CounterSettings extends Component {
 
   static propTypes = {
-    settings: PropTypes.object.isRequired,
     setSettings: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired
   };

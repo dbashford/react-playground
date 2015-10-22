@@ -7,7 +7,11 @@ module.exports = function(server, go) {
   const config = new RouteBuilder()
     .get('/api/settings', (request, reply) => {
       readFile(dataPath, 'utf8', (err, data) => {
-        reply(data);
+        // delay response to leave loading in place
+        // for a few seconds
+        setTimeout( () => {
+          reply(data);
+        }, 3000);
       });
     })
     .build();

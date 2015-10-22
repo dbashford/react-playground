@@ -5,16 +5,6 @@ import generateIndexPage from './index.html.js'
 
 const host = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 8000;
-
-let initialState = {
-  count: 0,
-  settings: {
-    amount: 1,
-    interval: 1000,
-    increment: true
-  }
-};
-
 const server = new Server();
 server.connection({host, port});
 
@@ -35,14 +25,14 @@ server.route({
   method: 'GET',
   path: '/{params*}',
   handler: {
-		file: (request) => "static" + request.path
-	}
+    file: (request) => "static" + request.path
+  }
 });
 
 server.ext("onPreResponse", (request, reply) => {
-	if (typeof request.response.statusCode !== "undefined") {
-		return reply.continue();
-	}
+  if (typeof request.response.statusCode !== "undefined") {
+    return reply.continue();
+  }
 
   // Gets this far, is looking for index page
   const location = (process.env.NODE_ENV === "production" ? "" : "//localhost:3000") + "/static/client.js";

@@ -13,8 +13,8 @@
     "start": "node ./babel.server",
     "lint": "eslint -c .eslintrc src",
     "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack/prod.config.js",
-    "dev-server": "node webpack/dev-server.js",
-    "watch": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run dev-server\" \"npm run start\""
+    "dev-server-dont-use": "node webpack/dev-server.js",
+    "watch": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run dev-server-dont-use\" \"npm run start\""
   },
   "dependencies": {
     "babel": "5.8.23",
