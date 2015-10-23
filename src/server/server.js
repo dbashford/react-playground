@@ -13,13 +13,13 @@ server.register([inert], (err) => {
     throw err;
   }
 
-  api(server, () => {
-    server.start( () => {
-      console.info('==> ✅  Server is listening');
-      console.info('==> 🌎  Go to ' + server.info.uri.toLowerCase());
-    });
+  server.start( () => {
+    console.info('==> ✅  Server is listening');
+    console.info('==> 🌎  Go to ' + server.info.uri.toLowerCase());
   });
 });
+
+api(server);
 
 server.route({
   method: 'GET',
