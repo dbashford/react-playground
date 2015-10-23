@@ -1,20 +1,31 @@
-import { readFile } from 'fs';
+import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { RouteBuilder } from 'hapi-route-builder';
-const dataPath = resolve(__dirname, '../data/settings.json');
+let state = require('../data/settings.json');
 
-module.exports = function(server, go) {
-  const config = new RouteBuilder()
+const get = function() {
+  return new RouteBuilder()
     .get('/api/settings', (request, reply) => {
-      readFile(dataPath, 'utf8', (err, data) => {
-        // delay response to leave loading in place
-        // for a few seconds
-        setTimeout( () => {
-          reply(data);
-        }, 3000);
-      });
+      setTimeout( () => {
+        reply(state);
+      }, 2000);
     })
     .build();
-  server.route(config);
+};
+
+const put = function() {
+  return new RouteBuilder()
+    .put('/api/settings', (request, reply) => {
+      state.settings = request.payload;
+      setTimeout( () => {
+        reply().code(204);
+      }, 2000);
+    })
+    .build();
+};
+
+module.exports = function(server, go) {
+  server.route(get());
+  server.route(put());
   go();
 };

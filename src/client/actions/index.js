@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+// import { BEGIN, COMMIT, REVERT } from 'redux-optimist';
 
 export const UPDATE_COUNT = 'UPDATE_COUNT';
 export const SET_SETTINGS = 'SET_SETTINGS';
@@ -11,6 +12,15 @@ export function updateCount() {
 }
 
 export function setSettings(settings) {
+  fetch('/api/settings', {
+    method: 'PUT',
+    body: JSON.stringify(settings),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
   return {
     type: SET_SETTINGS,
     payload: settings
