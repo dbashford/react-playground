@@ -1,8 +1,12 @@
-import { combineReducers } from 'redux-immutablejs';
+import { combineReducers } from 'redux';
+
+import optimist from 'redux-optimist';
 import count from './count-reducer';
 
-const rootReducer = combineReducers({
+let rootReducer = combineReducers({
   count
 });
+
+rootReducer = optimist(rootReducer);
 
 export default rootReducer;

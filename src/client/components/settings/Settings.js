@@ -8,7 +8,7 @@ import styles from './settings.scss';
 
 const redux = {
   mapStateToProps: (state) => {
-    return { initialSettings: state.getIn(['count', 'settings']) };
+    return { initialSettings: state.count.get('settings') };
   },
   actions: { setSettings }
 };

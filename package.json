@@ -26,8 +26,10 @@
     "react-redux": "2.1.2",
     "redux": "3.0.0",
 
+    "redux-optimist": "0.0.2",
+
     "immutable":"3.7.5",
-    "redux-immutablejs":"0.0.6",
+    "redux-immutablejs":"0.0.7",
 
     "concurrently": "0.1.1",
     "piping": "0.3.0",

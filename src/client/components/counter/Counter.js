@@ -8,8 +8,8 @@ import styles from './counter.scss';
 const redux = {
   mapStateToProps: (state) => {
     return {
-      count: state.getIn(['count', 'count']),
-      settings: state.getIn(['count', 'settings']),
+      count: state.count.get('count'),
+      settings: state.count.get('settings')
     };
   },
   actions: { updateCount }
