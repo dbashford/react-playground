@@ -77,9 +77,9 @@ export default class CounterSettings extends Component {
 
   render() {
     return (
-      <form styleName="cs-container" onSubmit={this.onSubmit.bind(this)}>
-        <div styleName="form-group">
-          <label styleName="make-block">
+      <form styleName="cs-container" className="counter-container" onSubmit={this.onSubmit.bind(this)}>
+        <div className="form-group">
+          <label className="block-level-elem">
             <input
               type="radio"
               name="counterDirection"
@@ -87,7 +87,7 @@ export default class CounterSettings extends Component {
               defaultChecked={this.state.fields.increment}
               onChange={this.handleRadioChange.bind(this)}
             />
-            <span>Increment</span>
+            <span className="label">Increment</span>
           </label>
           <label>
             <input
@@ -97,7 +97,7 @@ export default class CounterSettings extends Component {
               defaultChecked={!this.state.fields.increment}
               onChange={this.handleRadioChange.bind(this)}
             />
-            <span>Decrement</span>
+            <span className="label">Decrement</span>
           </label>
         </div>
 

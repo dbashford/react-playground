@@ -38,18 +38,18 @@ export default class RequiredNumber extends Component {
 
   render() {
     return (
-      <div styleName="form-group">
+      <div className="form-group">
         <label>
-          <span styleName="make-block">{this.props.label}</span>
+          <span className="block-level-elem label">{this.props.label}</span>
           <input
-            styleName="make-block"
             type="text"
             value={this.props.value}
             onChange={this.amountValidation}
             onBlur={this.amountPresentValidation}
-            />
+          />
+          <span className="validation-error">{this.props.error}</span>
         </label>
-        {this.props.error}
+
       </div>
     );
   }

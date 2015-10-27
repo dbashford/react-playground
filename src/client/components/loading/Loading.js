@@ -6,7 +6,11 @@ import styles from './loading.scss';
 export default class Loading extends Component {
   render() {
     return (
-      <div>Loading</div>
+      <div className="loading-container">
+        <div styleName="timer-loader">
+          Loading…
+        </div>
+      </div>
     );
   }
 }
