@@ -1,6 +1,7 @@
 // counter settings = cs
 
 .cs-container {
+  composes: container from "../../../stylesheets/base.scss";
   text-align: left;
   h1 {
     margin: 0;
@@ -16,20 +17,24 @@
   }
 }
 
-.cs-button-submit,
-.cs-button-cancel {
-  padding: 4px 8px;
-  background-color: #fff;
-  border: rgba(0,0,0,0.3) 1px solid;
-  border-radius: 3px;
-  margin-right: 10px;
-  font-size: 12px;
-  &:hover {
-    background-color: #ebebeb;
-  }
-  &:focus {
-    outline: none;
-  }
+.cs-form-group {
+  composes: form-group-spacing from "../../../stylesheets/base.scss";
+}
+.cs-block-level {
+  composes: block-level-elem from "../../../stylesheets/base.scss";
+}
+.cs-label {
+  composes: label from "../../../stylesheets/base.scss";
+  vertical-align: middle;
+}
+.cs-input-radio {
+  composes: input-radio-style from "../../../stylesheets/base.scss";
 }
 
+.cs-button-submit,
+.cs-button-cancel {
+  composes: button from "../../../stylesheets/base.scss";
+  background-color: #fff;
+  margin-right: 10px;
 
+}

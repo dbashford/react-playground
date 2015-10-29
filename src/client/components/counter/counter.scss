@@ -1,6 +1,7 @@
 // counter styles  = c
 
 .c-container {
+  composes: container from "../../../stylesheets/base.scss";
   text-align: center;
   h1 {
     margin: 0;
@@ -20,6 +21,10 @@
 .c-number-container {
   font-family: monospace;
   font-size: 20em;
+}
+
+.c-button-container {
+  composes: button-container from "../../../stylesheets/base.scss";
 }
 
 .c-button-start,

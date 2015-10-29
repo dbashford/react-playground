@@ -1,3 +1,10 @@
+.loading-container {
+  composes: container from "../../../stylesheets/base.scss";
+  padding: 60px;
+  min-width: 0;
+}
+
+// loading animation
 @-moz-keyframes timer-loader {
   0% {
     -moz-transform: rotate(0deg);

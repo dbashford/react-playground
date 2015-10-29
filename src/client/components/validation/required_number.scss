@@ -1,1 +1,11 @@
-/* not really needed - validation would be a global style */
+.cs-form-group {
+  composes: form-group-spacing from "../../../stylesheets/base.scss";
+}
+.cs-label {
+  composes: label from "../../../stylesheets/base.scss";
+  composes: block-level-elem from "../../../stylesheets/base.scss";
+  margin-right: 10px;
+}
+.cs-validation-error {
+  composes: validation-error from "../../../stylesheets/base.scss";
+}
