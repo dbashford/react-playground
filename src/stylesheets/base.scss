@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .container {
   display: inline-block;
   min-width: 25%;
@@ -6,11 +8,7 @@
   color: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  @include x-y-centering;
 }
 
 .button {
