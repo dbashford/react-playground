@@ -14,13 +14,11 @@
 ## TODOs
 
 ### Webpack/Hapi
-- hapi
 - isomorphic, allow application to be rendered on the server
 - prod builds in webpack
 
 ### React/Redux
 - redux-thunk, allow for async control flow
-- react-router, route for react
 - redux-react-router, redux bindings, keep router state in redux?
 - redux-form, manage forms/validation
 - redux-effects
